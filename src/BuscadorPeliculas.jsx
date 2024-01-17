@@ -2,9 +2,8 @@ import { useState } from "react"
 
 export const BuscadorPeliculas = () => {
 
-  const urlBase = curl --request GET \
-  --url 'https://api.themoviedb.org/3/search/movie'
-  const API_KEY =
+  const urlBase = 'https://api.themoviedb.org/3/search/movie'
+  const API_KEY = 'c1215816c747b244c9fe928443f60a00'
 
   const [busqueda, setBusqueda] = useState('')
   const [peliculas, setPeliculas] = useState([])
@@ -20,8 +19,9 @@ export const BuscadorPeliculas = () => {
 
   const fetchPeliculas = async () => {
     try{
-      const response = await fetch ('')
-
+      const response = await fetch (`${urlBase}?query=${busqueda}&api_key=${API_KEY}`)
+      const data = await response.json()
+      setPeliculas(data)
     }catch(error){
 
     }
